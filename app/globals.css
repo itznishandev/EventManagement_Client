@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@plugin "daisyui" {
-  themes: light --default, dark;
-}
 
 :root,
 [data-theme="light"] {
@@ -280,3 +277,4 @@ body {
   color: #ffffff !important;
   border-radius: 8px !important;
 }
+
