@@ -23,6 +23,7 @@
     "sweetalert2": "^11.17.2"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.4",
     "@tailwindcss/turbopack": "^4",
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
