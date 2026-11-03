@@ -1,0 +1,282 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, dark;
+}
+
+:root,
+[data-theme="light"] {
+  --bg-main: #f6f5f0;
+  --bg-surface: #ffffff;
+  --bg-elevated: #fcfbf8;
+  --bg-subtle: #edece5;
+  --bg-hero-tint: #eef3ef;
+  --text-primary: #14221c;
+  --text-secondary: #3f524a;
+  --text-muted: #6c7d75;
+  --border-subtle: #dfddd4;
+  --border-strong: #c8c5b9;
+  --brand-primary: #0f5338;
+  --brand-primary-hover: #0a3c28;
+  --brand-primary-soft: #dff0e7;
+  --brand-accent: #d95d39;
+  --brand-accent-soft: #fbece7;
+  --card-shadow: 0 10px 30px -12px rgba(20, 34, 28, 0.08);
+  --card-shadow-hover: 0 20px 38px -14px rgba(15, 83, 56, 0.16);
+}
+
+[data-theme="dark"] {
+  --bg-main: #0c1411;
+  --bg-surface: #13201b;
+  --bg-elevated: #182923;
+  --bg-subtle: #1d312a;
+  --bg-hero-tint: #101c17;
+  --text-primary: #eef6f2;
+  --text-secondary: #b4c8be;
+  --text-muted: #7f998d;
+  --border-subtle: #233931;
+  --border-strong: #2f4d42;
+  --brand-primary: #27b97d;
+  --brand-primary-hover: #1fa06b;
+  --brand-primary-soft: rgba(39, 185, 125, 0.15);
+  --brand-accent: #f07b58;
+  --brand-accent-soft: rgba(240, 123, 88, 0.15);
+  --card-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.45);
+  --card-shadow-hover: 0 22px 42px -14px rgba(0, 0, 0, 0.65);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.65;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* ============================================
+   LAYOUT CONTAINER
+   ============================================ */
+.container-uddog {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 640px) {
+  .container-uddog {
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-uddog {
+    padding: 0 32px;
+  }
+}
+
+/* ============================================
+   CONSISTENT SECTION HEADINGS (UI Requirement)
+   ============================================ */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.section-heading {
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+/* ============================================
+   UNIFORM BUTTON SYSTEM (UI Requirement)
+   ============================================ */
+.btn-uddog-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 12px;
+  font-size: 0.925rem;
+  font-weight: 600;
+  background-color: #0f5338;
+  color: #ffffff;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .btn-uddog-primary {
+  background-color: #21a66f;
+  color: #07150f;
+  font-weight: 700;
+}
+
+.btn-uddog-primary:hover:not(:disabled) {
+  background-color: #0a3c28;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -6px rgba(15, 83, 56, 0.45);
+}
+
+[data-theme="dark"] .btn-uddog-primary:hover:not(:disabled) {
+  background-color: #2bc686;
+  box-shadow: 0 8px 20px -6px rgba(39, 185, 125, 0.35);
+}
+
+.btn-uddog-primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.btn-uddog-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 12px;
+  font-size: 0.925rem;
+  font-weight: 600;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-uddog-outline:hover:not(:disabled) {
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+  background-color: var(--brand-primary-soft);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   CARDS & INPUTS
+   ============================================ */
+.uddog-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.uddog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--border-strong);
+}
+
+.uddog-input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.uddog-input:focus {
+  outline: none;
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px var(--brand-primary-soft);
+}
+
+.uddog-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ============================================
+   SKELETON SHIMMER ANIMATION
+   ============================================ */
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg-subtle) 25%,
+    var(--bg-elevated) 50%,
+    var(--bg-subtle) 75%
+  );
+  background-size: 200% 100%;
+  animation: uddog-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes uddog-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ============================================
+   REACT DATEPICKER OVERRIDES
+   ============================================ */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker {
+  font-family: inherit !important;
+  border-radius: 14px !important;
+  border: 1px solid var(--border-subtle) !important;
+  background-color: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+  box-shadow: var(--card-shadow-hover) !important;
+}
+
+.react-datepicker__header {
+  background-color: var(--bg-subtle) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker__day-name,
+.react-datepicker__day {
+  color: var(--text-primary) !important;
+}
+
+.react-datepicker__day--disabled {
+  color: var(--text-muted) !important;
+  opacity: 0.35 !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #0f5338 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+}
