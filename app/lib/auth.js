@@ -5,6 +5,13 @@ import { MongoClient } from "mongodb";
 const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
 const client = new MongoClient(uri);
 
+const configuredUrl = process.env.BETTER_AUTH_URL;
+const isProd = process.env.NODE_ENV === "production";
+const effectiveBaseURL =
+  isProd && configuredUrl && configuredUrl.includes("localhost")
+    ? undefined
+    : configuredUrl;
+
 export const auth = betterAuth({
   database: mongodbAdapter(client.db(process.env.MONGODB_DB || "uddog_events")),
   emailAndPassword: {
@@ -26,5 +33,5 @@ export const auth = betterAuth({
       : {}),
   },
   secret: process.env.BETTER_AUTH_SECRET,
-  baseURL: process.env.BETTER_AUTH_URL || "http://localhost:3000",
+  ...(effectiveBaseURL ? { baseURL: effectiveBaseURL } : {}),
 });

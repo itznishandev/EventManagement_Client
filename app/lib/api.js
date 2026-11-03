@@ -29,12 +29,21 @@ export async function apiRequest(endpointPath, options = {}) {
     headers,
   };
 
-  // Try external Express server first if configured on localhost or production URL, then fallback to built-in Next.js API route
   const normalizedPath = endpointPath.startsWith("/")
     ? endpointPath
     : `/${endpointPath}`;
 
-  if (EXTERNAL_API_BASE) {
+  // Avoid calling localhost:5000 when running on a deployed production domain (e.g. *.netlify.app / *.vercel.app)
+  const isRemoteHost =
+    typeof window !== "undefined" &&
+    window.location.hostname !== "localhost" &&
+    window.location.hostname !== "127.0.0.1";
+
+  const shouldTryExternal =
+    EXTERNAL_API_BASE &&
+    !(isRemoteHost && EXTERNAL_API_BASE.includes("localhost"));
+
+  if (shouldTryExternal) {
     try {
       const externalUrl = `${EXTERNAL_API_BASE.replace(/\/$/, "")}${normalizedPath}`;
       const res = await fetch(externalUrl, fetchConfig);
@@ -44,7 +53,6 @@ export async function apiRequest(endpointPath, options = {}) {
       }
       return data;
     } catch (extErr) {
-      // If network error (e.g. standalone frontend deployment without local port 5000 running), fall back seamlessly to internal Next.js MongoDB+JWT API route
       if (
         extErr.name !== "TypeError" &&
         !String(extErr.message).includes("Failed to fetch") &&
