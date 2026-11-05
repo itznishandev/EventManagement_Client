@@ -39,27 +39,6 @@
 - **Backend:** Express.js REST API + Next.js Route Handlers, MongoDB Atlas (`mongodb`)
 - **UI & Feedback Libraries:** `react-datepicker`, `react-hot-toast`, `sweetalert2`, `react-icons` (including the new `FaXTwitter` X logo)
 
----
-
-## 🚀 Local Setup Guide
-
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-2. **Configure `.env`:**
-   ```env
-   MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/uddog_events?retryWrites=true&w=majority
-   MONGODB_DB=uddog_events
-   JWT_SECRET=your_jwt_secret
-   BETTER_AUTH_SECRET=your_better_auth_secret
-   BETTER_AUTH_URL=http://localhost:3000
-   GOOGLE_CLIENT_ID=your_google_client_id
-   GOOGLE_CLIENT_SECRET=your_google_client_secret
-   GITHUB_CLIENT_ID=your_github_client_id
-   GITHUB_CLIENT_SECRET=your_github_client_secret
-   NEXT_PUBLIC_API_URL=http://localhost:5000/api
-   ```
 3. **Run development server:**
    ```bash
    npm run dev
