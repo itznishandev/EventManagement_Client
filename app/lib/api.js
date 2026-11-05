@@ -45,21 +45,24 @@ export async function apiRequest(endpointPath, options = {}) {
 
   if (shouldTryExternal) {
     try {
-      const externalUrl = `${EXTERNAL_API_BASE.replace(/\/$/, "")}${normalizedPath}`;
+      const cleanBase = EXTERNAL_API_BASE.replace(/\/+$/, "");
+      const baseWithApi = cleanBase.endsWith("/api")
+        ? cleanBase
+        : `${cleanBase}/api`;
+      const externalUrl = `${baseWithApi}${normalizedPath}`;
       const res = await fetch(externalUrl, fetchConfig);
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.message || data.error || "Request failed");
+      if (res.ok) {
+        const data = await res.json();
+        return data;
       }
-      return data;
+      console.warn(
+        `External API (${externalUrl}) returned ${res.status}. Falling back to internal Next.js API...`
+      );
     } catch (extErr) {
-      if (
-        extErr.name !== "TypeError" &&
-        !String(extErr.message).includes("Failed to fetch") &&
-        !String(extErr.message).includes("NetworkError")
-      ) {
-        throw extErr;
-      }
+      console.warn(
+        "External API fetch error. Falling back to internal Next.js API:",
+        extErr.message
+      );
     }
   }
 

@@ -5,10 +5,10 @@ import { MongoClient } from "mongodb";
 const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
 const client = new MongoClient(uri);
 
-const isProd = process.env.NODE_ENV === "production";
-const effectiveBaseURL = isProd
-  ? "https://uddog-event.netlify.app"
-  : process.env.BETTER_AUTH_URL || "http://localhost:3000";
+const effectiveBaseURL =
+  process.env.BETTER_AUTH_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
+  (process.env.NEXT_PUBLIC_APP_URL || "https://uddog-event.vercel.app");
 
 export const auth = betterAuth({
   database: mongodbAdapter(client.db(process.env.MONGODB_DB || "uddog_events")),
@@ -33,7 +33,10 @@ export const auth = betterAuth({
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL: effectiveBaseURL,
   trustedOrigins: [
+    "https://uddog-event.vercel.app",
     "https://uddog-event.netlify.app",
     "http://localhost:3000",
+    ...(process.env.BETTER_AUTH_URL ? [process.env.BETTER_AUTH_URL] : []),
+    ...(process.env.VERCEL_URL ? [`https://${process.env.VERCEL_URL}`] : []),
   ],
 });
