@@ -237,7 +237,7 @@ export default function EventDetailsPage() {
                   }}
                 >
                   <div className="flex items-start gap-3">
-                    <FiCalendar className="w-5 h-5 mt-0.5 text-[#0f5338] shrink-0" />
+                    <FiCalendar className="w-5 h-5 mt-0.5 text-brand shrink-0" />
                     <div>
                       <p
                         className="text-[11px] font-bold uppercase tracking-wider"
@@ -255,7 +255,7 @@ export default function EventDetailsPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <FiMapPin className="w-5 h-5 mt-0.5 text-[#0f5338] shrink-0" />
+                    <FiMapPin className="w-5 h-5 mt-0.5 text-brand shrink-0" />
                     <div>
                       <p
                         className="text-[11px] font-bold uppercase tracking-wider"
@@ -273,7 +273,7 @@ export default function EventDetailsPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <FiUsers className="w-5 h-5 mt-0.5 text-[#0f5338] shrink-0" />
+                    <FiUsers className="w-5 h-5 mt-0.5 text-brand shrink-0" />
                     <div>
                       <p
                         className="text-[11px] font-bold uppercase tracking-wider"
@@ -335,7 +335,7 @@ export default function EventDetailsPage() {
                         className="text-sm font-extrabold flex items-center gap-1.5"
                         style={{ color: "var(--text-primary)" }}
                       >
-                        <FiUser className="w-3.5 h-3.5 text-[#0f5338]" />
+                        <FiUser className="w-3.5 h-3.5 text-brand" />
                         <span>{event.creatorName || "Community Coordinator"}</span>
                       </p>
                       <p

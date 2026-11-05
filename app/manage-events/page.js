@@ -98,7 +98,11 @@ export default function ManageEventsPage() {
     if (!location.trim() || location.trim().length < 3) {
       errs.location = "Event location is required.";
     }
-    if (!eventDate || !(eventDate instanceof Date) || Number.isNaN(eventDate.getTime())) {
+    if (
+      !eventDate ||
+      !(eventDate instanceof Date) ||
+      Number.isNaN(eventDate.getTime())
+    ) {
       errs.eventDate = "Valid event date is required.";
     } else if (eventDate <= new Date()) {
       errs.eventDate = "Updated event date must be in the future.";
@@ -243,10 +247,10 @@ export default function ManageEventsPage() {
               {myEvents.map((ev) => (
                 <article
                   key={ev._id}
-                  className="uddog-card h-full flex flex-col justify-between overflow-hidden"
+                  className="uddog-card h-full flex flex-col justify-between overflow-hidden group"
                 >
                   <div>
-                    <div className="relative h-52 w-full overflow-hidden">
+                    <div className="relative h-56 w-full overflow-hidden">
                       <img
                         src={
                           ev.thumbnail ||
@@ -257,7 +261,7 @@ export default function ManageEventsPage() {
                           e.currentTarget.src =
                             "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=80";
                         }}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute top-3.5 left-3.5">
                         <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#0f5338] text-white">
@@ -275,19 +279,19 @@ export default function ManageEventsPage() {
                       </h2>
 
                       <div
-                        className="space-y-1.5 text-xs sm:text-sm"
+                        className="space-y-2 text-xs sm:text-sm"
                         style={{ color: "var(--text-secondary)" }}
                       >
                         <p className="flex items-center gap-2 font-medium">
-                          <FiMapPin className="w-4 h-4 text-[#0f5338] shrink-0" />
+                          <FiMapPin className="w-4 h-4 text-brand shrink-0" />
                           <span className="truncate">{ev.location}</span>
                         </p>
                         <p className="flex items-center gap-2 font-medium">
-                          <FiCalendar className="w-4 h-4 text-[#0f5338] shrink-0" />
+                          <FiCalendar className="w-4 h-4 text-brand shrink-0" />
                           <span>{formatEventDate(ev.eventDate)}</span>
                         </p>
                         <p className="flex items-center gap-2 font-medium">
-                          <FiUsers className="w-4 h-4 text-[#0f5338] shrink-0" />
+                          <FiUsers className="w-4 h-4 text-brand shrink-0" />
                           <span>
                             {ev.participantsCount || 0} volunteers registered
                           </span>
@@ -321,7 +325,7 @@ export default function ManageEventsPage() {
                     <button
                       type="button"
                       onClick={() => handleDeleteEvent(ev)}
-                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold bg-red-600/10 text-red-600 hover:bg-red-600 hover:text-white transition-colors cursor-pointer"
+                      className="btn-uddog-danger !px-3 !py-2.5 text-xs justify-center"
                     >
                       <FiTrash2 className="w-3.5 h-3.5" />
                       <span>Delete</span>
@@ -343,7 +347,10 @@ export default function ManageEventsPage() {
                 borderColor: "var(--border-subtle)",
               }}
             >
-              <div className="flex items-center justify-between gap-4 pb-4 border-b" style={{ borderColor: "var(--border-subtle)" }}>
+              <div
+                className="flex items-center justify-between gap-4 pb-4 border-b"
+                style={{ borderColor: "var(--border-subtle)" }}
+              >
                 <div>
                   <h2
                     className="text-xl font-extrabold"

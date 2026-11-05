@@ -108,7 +108,7 @@ export default function JoinedEventsPage() {
                     className="uddog-card h-full flex flex-col justify-between overflow-hidden group"
                   >
                     <div>
-                      <div className="relative h-52 w-full overflow-hidden">
+                      <div className="relative h-56 w-full overflow-hidden">
                         <img
                           src={
                             item.thumbnail ||
@@ -139,10 +139,7 @@ export default function JoinedEventsPage() {
                       </div>
 
                       <div className="p-6 space-y-3">
-                        <div
-                          className="inline-flex items-center gap-1.5 text-xs font-bold"
-                          style={{ color: "var(--brand-primary)" }}
-                        >
+                        <div className="inline-flex items-center gap-1.5 text-xs font-bold text-brand">
                           <FiCalendar className="w-3.5 h-3.5" />
                           <span>
                             Event Date: {formatEventDate(item.eventDate)}
@@ -160,7 +157,7 @@ export default function JoinedEventsPage() {
                           className="text-xs sm:text-sm flex items-center gap-2 font-medium"
                           style={{ color: "var(--text-secondary)" }}
                         >
-                          <FiMapPin className="w-4 h-4 text-[#0f5338] shrink-0" />
+                          <FiMapPin className="w-4 h-4 text-brand shrink-0" />
                           <span className="truncate">{item.location}</span>
                         </p>
 

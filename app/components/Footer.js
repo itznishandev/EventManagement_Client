@@ -14,7 +14,10 @@ export default function Footer() {
       }}
     >
       <div className="container-uddog py-14 sm:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b" style={{ borderColor: "var(--border-subtle)" }}>
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b"
+          style={{ borderColor: "var(--border-subtle)" }}
+        >
           {/* Brand Column */}
           <div className="lg:col-span-4 space-y-4">
             <Link href="/" className="inline-flex items-center gap-3">
@@ -127,7 +130,10 @@ export default function Footer() {
             >
               Platform
             </h3>
-            <ul className="space-y-2.5 text-sm" style={{ color: "var(--text-secondary)" }}>
+            <ul
+              className="space-y-2.5 text-sm"
+              style={{ color: "var(--text-secondary)" }}
+            >
               <li>
                 <Link href="/" className="hover:underline">
                   Home Overview
@@ -164,14 +170,17 @@ export default function Footer() {
             >
               Action Sectors
             </h3>
-            <ul className="space-y-2.5 text-sm" style={{ color: "var(--text-secondary)" }}>
+            <ul
+              className="space-y-2.5 text-sm"
+              style={{ color: "var(--text-secondary)" }}
+            >
               <li>
                 <Link
                   href="/upcoming-events?eventType=Donation"
                   className="hover:underline flex items-center gap-1"
                 >
                   <span>Winter Clothes & Blanket Drives</span>
-                  <FiArrowUpRight className="w-3.5 h-3.5" />
+                  <FiArrowUpRight className="w-3.5 h-3.5 text-brand" />
                 </Link>
               </li>
               <li>
@@ -180,7 +189,7 @@ export default function Footer() {
                   className="hover:underline flex items-center gap-1"
                 >
                   <span>Canal & Lake Plastic Cleanup</span>
-                  <FiArrowUpRight className="w-3.5 h-3.5" />
+                  <FiArrowUpRight className="w-3.5 h-3.5 text-brand" />
                 </Link>
               </li>
               <li>
@@ -189,7 +198,7 @@ export default function Footer() {
                   className="hover:underline flex items-center gap-1"
                 >
                   <span>Urban & Coastal Tree Plantation</span>
-                  <FiArrowUpRight className="w-3.5 h-3.5" />
+                  <FiArrowUpRight className="w-3.5 h-3.5 text-brand" />
                 </Link>
               </li>
               <li>
@@ -198,7 +207,7 @@ export default function Footer() {
                   className="hover:underline flex items-center gap-1"
                 >
                   <span>Community Health & Vision Camps</span>
-                  <FiArrowUpRight className="w-3.5 h-3.5" />
+                  <FiArrowUpRight className="w-3.5 h-3.5 text-brand" />
                 </Link>
               </li>
             </ul>
@@ -212,17 +221,22 @@ export default function Footer() {
             >
               Dhaka Field Office
             </h3>
-            <ul className="space-y-3 text-sm" style={{ color: "var(--text-secondary)" }}>
+            <ul
+              className="space-y-3 text-sm"
+              style={{ color: "var(--text-secondary)" }}
+            >
               <li className="flex items-start gap-2.5">
-                <FiMapPin className="w-4 h-4 mt-1 shrink-0 text-[#0f5338]" />
-                <span>House 42, Road 27, Dhanmondi R/A, Dhaka 1209, Bangladesh</span>
+                <FiMapPin className="w-4 h-4 mt-1 shrink-0 text-brand" />
+                <span>
+                  House 42, Road 27, Dhanmondi R/A, Dhaka 1209, Bangladesh
+                </span>
               </li>
               <li className="flex items-center gap-2.5">
-                <FiPhone className="w-4 h-4 shrink-0 text-[#0f5338]" />
+                <FiPhone className="w-4 h-4 shrink-0 text-brand" />
                 <span>+880 1711-482910 (Volunteer Desk)</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <FiMail className="w-4 h-4 shrink-0 text-[#0f5338]" />
+                <FiMail className="w-4 h-4 shrink-0 text-brand" />
                 <span>dispatch@uddog.org.bd</span>
               </li>
             </ul>

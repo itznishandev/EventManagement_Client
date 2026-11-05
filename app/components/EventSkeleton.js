@@ -9,7 +9,7 @@ export default function EventSkeleton({ count = 6 }) {
           className="uddog-card overflow-hidden h-full flex flex-col justify-between"
         >
           <div>
-            <div className="h-52 w-full skeleton-shimmer" />
+            <div className="h-56 w-full skeleton-shimmer" />
             <div className="p-6 space-y-3.5">
               <div className="h-6 w-4/5 rounded-lg skeleton-shimmer" />
               <div className="h-5 w-3/5 rounded-lg skeleton-shimmer" />

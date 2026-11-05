@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import {
-  FiCalendar,
   FiPlusCircle,
   FiSliders,
   FiCheckCircle,
@@ -72,13 +71,13 @@ export default function Navbar() {
       style={{
         backgroundColor:
           theme === "dark"
-            ? "rgba(12, 20, 17, 0.88)"
-            : "rgba(246, 245, 240, 0.90)",
+            ? "rgba(11, 19, 16, 0.90)"
+            : "rgba(246, 245, 240, 0.92)",
         borderColor: "var(--border-subtle)",
       }}
     >
       <div className="container-uddog h-20 flex items-center justify-between gap-4">
-        {/* Brand Logo & Name — Same Heading Style as Home Page */}
+        {/* Brand Logo & Name — Same Heading Style and Size as Home Page */}
         <Link
           href="/"
           className="flex items-center gap-3 group focus:outline-none"
@@ -119,10 +118,10 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-2">
+        <nav className="hidden md:flex items-center gap-1.5 lg:gap-2">
           <Link
             href="/"
-            className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+            className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all ${
               isActive("/")
                 ? "bg-[#0f5338] text-white shadow-sm"
                 : "hover:opacity-80"
@@ -136,7 +135,7 @@ export default function Navbar() {
 
           <Link
             href="/upcoming-events"
-            className={`px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all ${
+            className={`px-3.5 py-2 rounded-xl text-sm font-semibold flex items-center gap-1.5 transition-all ${
               isActive("/upcoming-events")
                 ? "bg-[#0f5338] text-white shadow-sm"
                 : "hover:opacity-80"
@@ -155,7 +154,7 @@ export default function Navbar() {
             <>
               <Link
                 href="/create-event"
-                className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all ${
+                className={`hidden lg:inline-flex px-3.5 py-2 rounded-xl text-sm font-semibold transition-all ${
                   isActive("/create-event")
                     ? "bg-[#0f5338] text-white shadow-sm"
                     : "hover:opacity-80"
@@ -169,8 +168,23 @@ export default function Navbar() {
                 Create Event
               </Link>
               <Link
+                href="/manage-events"
+                className={`hidden lg:inline-flex px-3.5 py-2 rounded-xl text-sm font-semibold transition-all ${
+                  isActive("/manage-events")
+                    ? "bg-[#0f5338] text-white shadow-sm"
+                    : "hover:opacity-80"
+                }`}
+                style={
+                  !isActive("/manage-events")
+                    ? { color: "var(--text-secondary)" }
+                    : undefined
+                }
+              >
+                Manage Events
+              </Link>
+              <Link
                 href="/joined-events"
-                className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all ${
+                className={`hidden lg:inline-flex px-3.5 py-2 rounded-xl text-sm font-semibold transition-all ${
                   isActive("/joined-events")
                     ? "bg-[#0f5338] text-white shadow-sm"
                     : "hover:opacity-80"
@@ -207,7 +221,7 @@ export default function Navbar() {
             }}
           >
             {theme === "light" ? (
-              <FiMoon className="w-4 h-4 text-[#0f5338]" />
+              <FiMoon className="w-4 h-4 text-brand" />
             ) : (
               <FiSun className="w-4 h-4 text-amber-400" />
             )}
@@ -295,7 +309,7 @@ export default function Navbar() {
                         className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors hover:bg-[#0f5338]/10"
                         style={{ color: "var(--text-primary)" }}
                       >
-                        <FiPlusCircle className="w-4 h-4 text-[#0f5338]" />
+                        <FiPlusCircle className="w-4 h-4 text-brand" />
                         <span>Create Event</span>
                       </Link>
 
@@ -305,7 +319,7 @@ export default function Navbar() {
                         className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors hover:bg-[#0f5338]/10"
                         style={{ color: "var(--text-primary)" }}
                       >
-                        <FiSliders className="w-4 h-4 text-[#0f5338]" />
+                        <FiSliders className="w-4 h-4 text-brand" />
                         <span>Manage Events</span>
                       </Link>
 
@@ -315,7 +329,7 @@ export default function Navbar() {
                         className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors hover:bg-[#0f5338]/10"
                         style={{ color: "var(--text-primary)" }}
                       >
-                        <FiCheckCircle className="w-4 h-4 text-[#0f5338]" />
+                        <FiCheckCircle className="w-4 h-4 text-brand" />
                         <span>Joined Events</span>
                       </Link>
 
@@ -325,7 +339,7 @@ export default function Navbar() {
                         className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors hover:bg-[#0f5338]/10"
                         style={{ color: "var(--text-primary)" }}
                       >
-                        <FiUser className="w-4 h-4 text-[#0f5338]" />
+                        <FiUser className="w-4 h-4 text-brand" />
                         <span>My Profile</span>
                       </Link>
                     </div>

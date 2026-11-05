@@ -165,7 +165,7 @@ export default function CreateEventPage() {
                 }}
               >
                 <div className="flex items-center gap-3">
-                  <FiUserCheck className="w-5 h-5 text-[#0f5338]" />
+                  <FiUserCheck className="w-5 h-5 text-brand" />
                   <div>
                     <p
                       className="text-xs font-bold uppercase tracking-wider"
@@ -181,7 +181,7 @@ export default function CreateEventPage() {
                     </p>
                   </div>
                 </div>
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#0f5338]/10 text-[#0f5338]">
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-brand-soft">
                   JWT Authenticated
                 </span>
               </div>
@@ -474,7 +474,7 @@ export default function CreateEventPage() {
                 </div>
 
                 <div className="p-5 space-y-3">
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#dff0e7] text-[#0f5338]">
+                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-brand-soft">
                     {eventType || "Donation"}
                   </span>
                   <h3
@@ -499,11 +499,11 @@ export default function CreateEventPage() {
                     }}
                   >
                     <p className="flex items-center gap-2 font-medium">
-                      <FiMapPin className="w-3.5 h-3.5 text-[#0f5338]" />
+                      <FiMapPin className="w-3.5 h-3.5 text-brand" />
                       <span>{location.trim() || "Mirpur 10, Dhaka"}</span>
                     </p>
                     <p className="flex items-center gap-2 font-medium">
-                      <FiCalendar className="w-3.5 h-3.5 text-[#0f5338]" />
+                      <FiCalendar className="w-3.5 h-3.5 text-brand" />
                       <span>
                         {eventDate
                           ? formatEventDate(eventDate.toISOString())

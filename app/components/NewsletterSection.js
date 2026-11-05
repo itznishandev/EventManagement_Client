@@ -53,15 +53,15 @@ export default function NewsletterSection() {
                 style={{ color: "var(--text-secondary)" }}
               >
                 <span className="inline-flex items-center gap-1.5">
-                  <FiCheckCircle className="w-4 h-4 text-[#0f5338]" />
+                  <FiCheckCircle className="w-4 h-4 text-brand" />
                   <span>Verified Ward Organizers</span>
                 </span>
                 <span className="inline-flex items-center gap-1.5">
-                  <FiCheckCircle className="w-4 h-4 text-[#0f5338]" />
+                  <FiCheckCircle className="w-4 h-4 text-brand" />
                   <span>Thursday Morning Digest</span>
                 </span>
                 <span className="inline-flex items-center gap-1.5">
-                  <FiCheckCircle className="w-4 h-4 text-[#0f5338]" />
+                  <FiCheckCircle className="w-4 h-4 text-brand" />
                   <span>One-Click Unsubscribe</span>
                 </span>
               </div>
