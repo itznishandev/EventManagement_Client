@@ -21,7 +21,7 @@ export default function NewsletterSection() {
   };
 
   return (
-    <section className="py-12 sm:py-16">
+    <section className="pt-14 pb-16 sm:pt-18 sm:pb-24">
       <div className="container-uddog">
         <div
           className="rounded-3xl border p-8 sm:p-12 lg:p-14 relative overflow-hidden"
