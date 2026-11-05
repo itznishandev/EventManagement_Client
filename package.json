@@ -14,7 +14,7 @@
     "daisyui": "^5.7.47",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^7.7.0",
-    "next": "16.4.0",
+    "next": "16.4.5",
     "react": "19.3.0",
     "react-datepicker": "^8.4.0",
     "react-dom": "19.3.0",
@@ -26,7 +26,7 @@
     "@tailwindcss/postcss": "^4.3.4",
     "@tailwindcss/turbopack": "^4",
     "eslint": "^9",
-    "eslint-config-next": "16.4.0",
+    "eslint-config-next": "16.4.5",
     "tailwindcss": "^4"
   }
 }
