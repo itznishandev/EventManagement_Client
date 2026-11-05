@@ -7,16 +7,7 @@ import {
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa6";
-import {
-  FiMapPin,
-  FiPhone,
-  FiMail,
-  FiArrowUpRight,
-  FiArrowUp,
-  FiShield,
-  FiHeart,
-  FiCheckCircle,
-} from "react-icons/fi";
+import { FiMapPin, FiPhone, FiMail, FiArrowUpRight, FiArrowUp } from "react-icons/fi";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -27,124 +18,16 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative border-t mt-16 sm:mt-24 lg:mt-28 transition-colors"
+      className="border-t mt-24 sm:mt-32 transition-colors"
       style={{
         backgroundColor: "var(--bg-surface)",
         borderColor: "var(--border-subtle)",
       }}
     >
-      {/* Top Gradient Highlight Accent Line */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0f5338] dark:via-[#2bc485] to-transparent opacity-70" />
-
-      {/* Floating Centered "Back to Top" Pill */}
-      <div className="absolute -top-4.5 left-1/2 -translate-x-1/2 z-10">
-        <button
-          type="button"
-          onClick={scrollToTop}
-          aria-label="Scroll back to top"
-          className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold border shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer"
-          style={{
-            backgroundColor: "var(--bg-surface)",
-            borderColor: "var(--border-strong)",
-            color: "var(--text-secondary)",
-          }}
-        >
-          <FiArrowUp className="w-3.5 h-3.5 text-brand" />
-          <span>Back to Top</span>
-        </button>
-      </div>
-
-      <div className="container-uddog pt-16 sm:pt-20 pb-12 sm:pb-14">
-        {/* Top Civic Trust Highlights Bar */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-12 mb-12 border-b"
-          style={{ borderColor: "var(--border-subtle)" }}
-        >
-          <div className="flex items-start gap-3.5">
-            <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-              style={{
-                backgroundColor: "var(--brand-primary-soft)",
-                color: "var(--brand-primary)",
-              }}
-            >
-              <FiCheckCircle className="w-5 h-5 text-brand" />
-            </div>
-            <div>
-              <h4
-                className="text-sm font-extrabold"
-                style={{ color: "var(--text-primary)" }}
-              >
-                100% Grassroots & Civic
-              </h4>
-              <p
-                className="text-xs leading-relaxed mt-0.5"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Community-driven volunteer initiatives with zero commercial
-                sponsorship bias.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3.5">
-            <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-              style={{
-                backgroundColor: "var(--brand-primary-soft)",
-                color: "var(--brand-primary)",
-              }}
-            >
-              <FiShield className="w-5 h-5 text-brand" />
-            </div>
-            <div>
-              <h4
-                className="text-sm font-extrabold"
-                style={{ color: "var(--text-primary)" }}
-              >
-                JWT-Protected Ownership
-              </h4>
-              <p
-                className="text-xs leading-relaxed mt-0.5"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Secure organizer authentication and verified volunteer
-                attendance rosters.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3.5">
-            <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-              style={{
-                backgroundColor: "var(--brand-primary-soft)",
-                color: "var(--brand-primary)",
-              }}
-            >
-              <FiHeart className="w-5 h-5 text-brand" />
-            </div>
-            <div>
-              <h4
-                className="text-sm font-extrabold"
-                style={{ color: "var(--text-primary)" }}
-              >
-                Measurable Civic Impact
-              </h4>
-              <p
-                className="text-xs leading-relaxed mt-0.5"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Documented winter distributions, lake cleanups, and urban
-                plantations across Bangladesh.
-              </p>
-            </div>
-          </div>
-        </div>
-
+      <div className="container-uddog pt-16 sm:pt-20 pb-12 sm:pb-16">
         {/* Main 4-Column Footer Navigation Grid */}
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b"
           style={{ borderColor: "var(--border-subtle)" }}
         >
           {/* Brand Column */}
@@ -176,9 +59,7 @@ export default function Footer() {
                 >
                   Uddog
                 </span>
-                <span
-                  className="text-[11px] font-semibold tracking-widest uppercase mt-1 text-brand"
-                >
+                <span className="text-[11px] font-semibold tracking-widest uppercase mt-1 text-brand">
                   Civic Action Network
                 </span>
               </div>
@@ -257,11 +138,10 @@ export default function Footer() {
           {/* Platform Navigation */}
           <div className="lg:col-span-2 space-y-3.5">
             <h3
-              className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5"
+              className="text-xs font-bold uppercase tracking-wider"
               style={{ color: "var(--text-primary)" }}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0f5338]" />
-              <span>Platform</span>
+              Platform
             </h3>
             <ul
               className="space-y-2.5 text-sm"
@@ -313,11 +193,10 @@ export default function Footer() {
           {/* Focus Categories */}
           <div className="lg:col-span-3 space-y-3.5">
             <h3
-              className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5"
+              className="text-xs font-bold uppercase tracking-wider"
               style={{ color: "var(--text-primary)" }}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0f5338]" />
-              <span>Action Sectors</span>
+              Action Sectors
             </h3>
             <ul
               className="space-y-2.5 text-sm"
@@ -373,11 +252,10 @@ export default function Footer() {
           {/* Coordination Desk */}
           <div className="lg:col-span-3 space-y-3.5">
             <h3
-              className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5"
+              className="text-xs font-bold uppercase tracking-wider"
               style={{ color: "var(--text-primary)" }}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0f5338]" />
-              <span>Dhaka Field Office</span>
+              Dhaka Field Office
             </h3>
             <ul
               className="space-y-3 text-sm"
@@ -406,13 +284,10 @@ export default function Footer() {
           className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs"
           style={{ color: "var(--text-muted)" }}
         >
-          <div className="flex items-center gap-2.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <p>
-              © {new Date().getFullYear()} Uddog Civic Action Platform. All
-              community drives verified for local social impact.
-            </p>
-          </div>
+          <p>
+            © {new Date().getFullYear()} Uddog Civic Action Platform. All
+            community drives verified for local social impact.
+          </p>
           <div className="flex items-center gap-6 font-medium">
             <Link
               href="/upcoming-events"
@@ -426,6 +301,14 @@ export default function Footer() {
             >
               Organizer Portal
             </Link>
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="inline-flex items-center gap-1 hover:underline transition-colors hover:text-brand cursor-pointer"
+            >
+              <span>Back to top</span>
+              <FiArrowUp className="w-3 h-3 text-brand" />
+            </button>
           </div>
         </div>
       </div>

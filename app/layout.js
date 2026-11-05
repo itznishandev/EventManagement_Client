@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
               }}
             />
             <Navbar />
-            <main className="flex-1 pb-10 sm:pb-16">{children}</main>
+            <main className="flex-1">{children}</main>
             <Footer />
           </AuthProvider>
         </ThemeProvider>
