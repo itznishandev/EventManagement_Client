@@ -1,6 +1,16 @@
 "use client";
 
-const EXTERNAL_API_BASE = process.env.NEXT_PUBLIC_API_URL || "";
+// Strictly target the separate Express Backend Server
+const DEFAULT_SERVER_URL = "https://event-management-server-xi.vercel.app/api";
+
+function resolveServerApiUrl() {
+  const envUrl = process.env.NEXT_PUBLIC_API_URL;
+  if (envUrl && envUrl.trim().length > 0) {
+    const clean = envUrl.trim().replace(/\/+$/, "");
+    return clean.endsWith("/api") ? clean : `${clean}/api`;
+  }
+  return DEFAULT_SERVER_URL;
+}
 
 export function getStoredToken() {
   if (typeof window === "undefined") return null;
@@ -16,6 +26,11 @@ export function setStoredToken(token) {
   }
 }
 
+/**
+ * apiRequest strictly dispatches all CRUD & business requests directly to
+ * the standalone Express backend server (EventManagement_Server).
+ * No internal Next.js client-side backup handler or mock route is used.
+ */
 export async function apiRequest(endpointPath, options = {}) {
   const token = getStoredToken();
   const headers = {
@@ -33,45 +48,20 @@ export async function apiRequest(endpointPath, options = {}) {
     ? endpointPath
     : `/${endpointPath}`;
 
-  // Avoid calling localhost:5000 when running on a deployed production domain (e.g. *.netlify.app / *.vercel.app)
-  const isRemoteHost =
-    typeof window !== "undefined" &&
-    window.location.hostname !== "localhost" &&
-    window.location.hostname !== "127.0.0.1";
+  const serverBase = resolveServerApiUrl();
+  const targetUrl = `${serverBase}${normalizedPath}`;
 
-  const shouldTryExternal =
-    EXTERNAL_API_BASE &&
-    !(isRemoteHost && EXTERNAL_API_BASE.includes("localhost"));
+  const res = await fetch(targetUrl, fetchConfig);
+  const data = await res.json().catch(() => null);
 
-  if (shouldTryExternal) {
-    try {
-      const cleanBase = EXTERNAL_API_BASE.replace(/\/+$/, "");
-      const baseWithApi = cleanBase.endsWith("/api")
-        ? cleanBase
-        : `${cleanBase}/api`;
-      const externalUrl = `${baseWithApi}${normalizedPath}`;
-      const res = await fetch(externalUrl, fetchConfig);
-      if (res.ok) {
-        const data = await res.json();
-        return data;
-      }
-      console.warn(
-        `External API (${externalUrl}) returned ${res.status}. Falling back to internal Next.js API...`
-      );
-    } catch (extErr) {
-      console.warn(
-        "External API fetch error. Falling back to internal Next.js API:",
-        extErr.message
-      );
-    }
-  }
-
-  const internalUrl = `/api${normalizedPath}`;
-  const res = await fetch(internalUrl, fetchConfig);
-  const data = await res.json();
   if (!res.ok) {
-    throw new Error(data.message || data.error || "Request failed");
+    const errorMsg =
+      data?.message ||
+      data?.error ||
+      `Server Error (${res.status}): ${res.statusText || "Request failed"}`;
+    throw new Error(errorMsg);
   }
+
   return data;
 }
 
