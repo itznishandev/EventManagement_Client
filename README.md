@@ -8,7 +8,6 @@
 
 - **Website Name:** Uddog — Civic Action Network
 - **Live Client URL (Vercel):** [https://uddog-event.vercel.app](https://uddog-event.vercel.app)
-- **Live Client URL (Netlify Backup):** [https://uddog-event.netlify.app](https://uddog-event.netlify.app)
 - **Live Server API (Vercel):** [https://event-management-server-xi.vercel.app/api](https://event-management-server-xi.vercel.app/api)
 - **Client Repository:** [https://github.com/itznishandev/EventManagement_Client](https://github.com/itznishandev/EventManagement_Client)
 - **Server Repository:** [https://github.com/itznishandev/EventManagement_Server](https://github.com/itznishandev/EventManagement_Server)
@@ -39,7 +38,5 @@
 - **Backend:** Express.js REST API + Next.js Route Handlers, MongoDB Atlas (`mongodb`)
 - **UI & Feedback Libraries:** `react-datepicker`, `react-hot-toast`, `sweetalert2`, `react-icons` (including the new `FaXTwitter` X logo)
 
-3. **Run development server:**
-   ```bash
    npm run dev
    ```
