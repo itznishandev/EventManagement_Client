@@ -18,16 +18,18 @@ export default function Footer() {
 
   return (
     <footer
-      className="border-t mt-24 sm:mt-32 transition-colors"
+      className="border-t mt-20 sm:mt-28 transition-colors"
       style={{
         backgroundColor: "var(--bg-surface)",
         borderColor: "var(--border-subtle)",
+        paddingTop: "4.5rem",
+        paddingBottom: "3.5rem",
       }}
     >
-      <div className="container-uddog pt-16 sm:pt-20 pb-12 sm:pb-16">
+      <div className="container-uddog">
         {/* Main 4-Column Footer Navigation Grid */}
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b"
           style={{ borderColor: "var(--border-subtle)" }}
         >
           {/* Brand Column */}
