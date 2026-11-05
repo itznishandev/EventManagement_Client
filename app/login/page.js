@@ -91,13 +91,6 @@ function LoginFormContent() {
     }
   };
 
-  const fillDemoAccount = () => {
-    setEmail("coordinator@uddog.org");
-    setPassword("Uddog123");
-    setFieldErrors({});
-    toast.success("Filled demo coordinator credentials.");
-  };
-
   return (
     <div className="container-uddog py-12 sm:py-16">
       <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
@@ -141,28 +134,19 @@ function LoginFormContent() {
 
         {/* Right Login Form Card */}
         <div className="lg:col-span-7 uddog-card p-7 sm:p-10">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
-            <div>
-              <h2
-                className="text-2xl font-extrabold"
-                style={{ color: "var(--text-primary)" }}
-              >
-                Sign in to Uddog
-              </h2>
-              <p
-                className="text-sm mt-1"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Enter your email and password or continue with a social account.
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={fillDemoAccount}
-              className="btn-uddog-outline !py-1.5 !px-3 text-xs shrink-0"
+          <div className="mb-6">
+            <h2
+              className="text-2xl font-extrabold"
+              style={{ color: "var(--text-primary)" }}
             >
-              Demo Coordinator Fill
-            </button>
+              Sign in to Uddog
+            </h2>
+            <p
+              className="text-sm mt-1"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              Enter your email and password or continue with a social account.
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4" noValidate>

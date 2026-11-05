@@ -7,7 +7,7 @@
 ## 🔗 Live Site & Repositories
 
 - **Website Name:** Uddog — Civic Action Network
-- **Live Site URL:** [https://uddog-events.vercel.app](https://uddog-events.vercel.app)
+- **Live Site URL:** [https://uddog-event.netlify.app](https://uddog-event.netlify.app)
 - **Client Repository:** [https://github.com/itznishandev/EventManagement_Client](https://github.com/itznishandev/EventManagement_Client)
 - **Server Repository:** [https://github.com/itznishandev/EventManagement_Server](https://github.com/itznishandev/EventManagement_Server)
 

@@ -5,12 +5,10 @@ import { MongoClient } from "mongodb";
 const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
 const client = new MongoClient(uri);
 
-const configuredUrl = process.env.BETTER_AUTH_URL;
 const isProd = process.env.NODE_ENV === "production";
-const effectiveBaseURL =
-  isProd && configuredUrl && configuredUrl.includes("localhost")
-    ? undefined
-    : configuredUrl;
+const effectiveBaseURL = isProd
+  ? "https://uddog-event.netlify.app"
+  : process.env.BETTER_AUTH_URL || "http://localhost:3000";
 
 export const auth = betterAuth({
   database: mongodbAdapter(client.db(process.env.MONGODB_DB || "uddog_events")),
@@ -33,5 +31,9 @@ export const auth = betterAuth({
       : {}),
   },
   secret: process.env.BETTER_AUTH_SECRET,
-  ...(effectiveBaseURL ? { baseURL: effectiveBaseURL } : {}),
+  baseURL: effectiveBaseURL,
+  trustedOrigins: [
+    "https://uddog-event.netlify.app",
+    "http://localhost:3000",
+  ],
 });
