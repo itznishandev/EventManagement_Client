@@ -1,12 +1,15 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 import { authClient } from "@/app/lib/auth-client";
 import { apiRequest, getStoredToken, setStoredToken } from "@/app/lib/api";
 
 const AuthContext = createContext(null);
 
 const USER_STORAGE_KEY = "uddog_active_user";
+const OAUTH_PENDING_KEY = "uddog_oauth_pending";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -34,6 +37,13 @@ export function AuthProvider({ children }) {
             const sessionRes = await authClient.getSession();
             if (sessionRes?.data?.user && isMounted) {
               const oauthUser = sessionRes.data.user;
+              const wasOAuthRedirect =
+                typeof window !== "undefined" &&
+                (sessionStorage.getItem(OAUTH_PENDING_KEY) === "true" ||
+                  !localUser ||
+                  localUser.email?.toLowerCase() !==
+                    oauthUser.email?.toLowerCase());
+
               const syncRes = await apiRequest("/auth/social", {
                 method: "POST",
                 body: JSON.stringify({
@@ -54,6 +64,24 @@ export function AuthProvider({ children }) {
                   setStoredToken(syncRes.token);
                 }
                 localUser = syncRes.user;
+
+                if (wasOAuthRedirect && typeof window !== "undefined") {
+                  sessionStorage.removeItem(OAUTH_PENDING_KEY);
+                  const welcomeName =
+                    syncRes.user.displayName ||
+                    syncRes.user.name ||
+                    syncRes.user.email;
+                  toast.success(`Welcome, ${welcomeName}!`);
+                  Swal.fire({
+                    icon: "success",
+                    title: "Login Successful!",
+                    text: `Signed in as ${welcomeName}`,
+                    timer: 1700,
+                    showConfirmButton: false,
+                    background: "var(--bg-surface)",
+                    color: "var(--text-primary)",
+                  });
+                }
               }
             }
           } catch (oauthErr) {
@@ -133,6 +161,9 @@ export function AuthProvider({ children }) {
 
   const loginWithGoogle = async (callbackUrl = "/") => {
     if (authClient?.signIn?.social) {
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem(OAUTH_PENDING_KEY, "true");
+      }
       const res = await authClient.signIn.social({
         provider: "google",
         callbackURL: callbackUrl,
@@ -147,6 +178,9 @@ export function AuthProvider({ children }) {
 
   const loginWithGithub = async (callbackUrl = "/") => {
     if (authClient?.signIn?.social) {
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem(OAUTH_PENDING_KEY, "true");
+      }
       const res = await authClient.signIn.social({
         provider: "github",
         callbackURL: callbackUrl,
@@ -199,6 +233,7 @@ export function AuthProvider({ children }) {
     }
     if (typeof window !== "undefined") {
       localStorage.removeItem(USER_STORAGE_KEY);
+      sessionStorage.removeItem(OAUTH_PENDING_KEY);
     }
     setStoredToken(null);
     setUser(null);

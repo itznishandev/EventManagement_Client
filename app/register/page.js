@@ -323,7 +323,11 @@ function RegisterFormContent() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <button
               type="button"
-              onClick={() => loginWithGoogle(callbackUrl)}
+              onClick={() =>
+                loginWithGoogle(callbackUrl).catch((err) =>
+                  toast.error(err.message || "Google sign-up could not be started.")
+                )
+              }
               className="btn-uddog-outline w-full justify-center text-sm"
             >
               <FcGoogle className="w-5 h-5" />
@@ -331,7 +335,11 @@ function RegisterFormContent() {
             </button>
             <button
               type="button"
-              onClick={() => loginWithGithub(callbackUrl)}
+              onClick={() =>
+                loginWithGithub(callbackUrl).catch((err) =>
+                  toast.error(err.message || "GitHub sign-up could not be started.")
+                )
+              }
               className="btn-uddog-outline w-full justify-center text-sm"
             >
               <FaGithub className="w-5 h-5" />
